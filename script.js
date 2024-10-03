@@ -1,13 +1,13 @@
 const tiles = [
     {
-        image: 'https://i.ibb.co/bLc8J5g/resized-image-2.png',
-        thumb: 'https://i.ibb.co/9HJtjG4/Whats-App-Image-2024-10-02-at-15-43-23-bfa99036.jpg',
+        image: './pictures/resized-image(4).png',
+        thumb: './pictures/resized-image(4).png',
         title: 'Нудимо ексклузивну услугу изнајмљивања Mercedes W126 Coupe, легендарног класика који доноси елеганцију и префињеност у сваку прилику. Било да вам је потребан за снимање филмова, музичких спотова или за незаборавне тренутке попут венчања, наш Mercedes ће употпунити атмосферу својим безвременским дизајном и луксузом. Идеалан за све оне који желе да свој догађај или продукцију учине посебном и јединственом..',
         nextTitle: 'О нама  <br /> и нашим услугама'
     },
     {
-        image: 'https://i.ibb.co/Cmm7V1G/resized-image.png',
-        thumb: 'https://i.ibb.co/q12KBTK/Whats-App-Image-2024-10-02-at-15-43-24-742282dd.jpg',
+        image: './pictures/resized-image.png',
+        thumb: './pictures/resized-image(1).png',
         title: 'Сића о Ћенти деведесетих: Кад је почео рат,Ћента се вратио у Југославију и становао је башу хотелу "Југославија" у Београду, а своју"Мечку" је паркирао тачно на улазу. Кад је тајаутомобил видео директор хотела, иначе јака зверка,један од главних људи Мире Марковић, питао јељуде који су стајали у близини чији је "Мерцедес",Ћента каже: "Мој, па шта? Ко си ти?" Овај ће: "Јасам директор овог хотела и "Метропола", а ко сити?" Ћента му звизне шамар и каже: "Слушај бреџукело, кад причаш са мном да извадиш руке изџепова. Ја сам Ћента, директор Европе!".',
         nextTitle: 'Историја и <br /> оригинални власник'
     }
@@ -45,6 +45,12 @@ function populateInitialData() {
 }
 
 
+window.addEventListener('resize', function() {
+    const img = document.querySelector('.tile__img');
+    img.style.display = 'none';
+    img.offsetHeight; // Trigger a reflow
+    img.style.display = 'block';
+});
 
 function updateTileRatio() {
     const tileImages = document.querySelectorAll('.tile__img');
@@ -99,17 +105,6 @@ const titleAnimation = new TimelineMax({ paused: true })
 // Next tile button animation
 // --------------------------
 
-TweenMax.set('.next-tile__preview img', { top: '50%', right: '0', y: '-50%' });
-
-TweenMax.set('.tile__img--last', { scale: 1.2, opacity: 0.001 });
-TweenMax.set('.tile__img--first, .title__img--last', { yPercent: -50, xPercent: -50 });
-TweenMax.set('.title', { y: '-50%', width: '100%' });
-TweenMax.set('.title__container', { width: '100%' });
-TweenMax.set('.tile__img', {
-    width: '100vw',          // Full viewport width
-    height: '100vh',         // Full viewport height
-    position: 'absolute',    // Absolutely positioned
-});
 const nextTextAnimation = new TimelineMax({ paused: true })
     .to('.next-tile__title__text--first', 0.4, { opacity: 0 }, 'textChange')
     .to('.next-tile__title__text--last', 0.4, { opacity: 1 }, 'textChange');
